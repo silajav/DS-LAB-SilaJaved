@@ -1,0 +1,88 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class exam{
+    int* id;
+    string* name;
+    int* score;
+    
+    public:
+     exam() {
+        id = new int(0);
+        name = new string("Unknown");
+        score = new int(0);
+    }
+
+    exam(int i, string n, int s) {
+        id = new int(i);
+        name = new string(n);
+        score = new int(s);
+    }
+    
+    // Shallow copy constructor
+    exam(const exam& obj) {
+        id = obj.id;
+        name = obj.name;
+        score = obj.score;
+}
+
+    
+    ~exam() {
+        delete id;
+        delete name;
+        delete score;
+    }
+
+    
+    void setId(int i) { 
+        *id = i; 
+        
+    }
+    void setName(string n) { 
+        *name = n; 
+        
+    }
+    void setScore(int s) { 
+        *score = s; 
+        
+    }
+
+    
+    int getId() { 
+        return *id;
+        }
+    string getName() { 
+        return *name;
+        }
+    int getScore() { 
+        return *score; 
+        
+    }
+    
+     void show(string label) {
+        cout << label << " -> ID: " << getId()
+             << ", Name: " << getName()
+             << ", Score: " << getScore() << endl;
+    }
+    
+
+};
+
+int main() {
+    exam e1(1, "abcd", 95);
+    exam e2 = e1; 
+    cout << "Before change:" << endl;
+    e1.show("e1");
+    e2.show("e2");
+    
+    e2.setId(2);
+    e2.setName("Bob");
+    e2.setScore(50);
+    
+    cout << "after changing e2:" << endl;
+    e1.show("e1");
+    e2.show("e2");
+    
+    return 0;
+}
