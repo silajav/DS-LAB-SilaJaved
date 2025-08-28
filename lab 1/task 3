@@ -1,0 +1,100 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class box{
+    int num;
+    
+    public:
+    #include <iostream>
+using namespace std;
+
+class Box {
+    int* data;
+
+public:
+    Box(int value = 0) {
+        data = new int(value);
+    }
+
+    // Deep Copy Constructor
+    Box(const Box& other) {
+        data = new int(*other.data);
+    }
+
+    // Copy Assignment Operator (Deep Copy)
+    Box& operator=(const Box& other) {
+        if (this != &other) {
+            delete data;
+            data = new int(*other.data);
+        }
+        return *this;
+    }
+
+    ~Box() {
+        delete data;
+    }
+
+    void setValue(int value) { *data = value; }
+    int getValue() const { return *data; }
+
+    void show(string label) {
+        cout << label << " -> Value: " << getValue() << endl;
+    }
+};
+
+
+class Box {
+    int* data;
+
+    public:
+       Box(int value = 0) {
+        data = new int(value);
+    }
+
+    
+       Box(const ShallowBox& other) {
+        data = other.data;
+    }
+
+    
+       Box& operator=(const Box& other) {
+        if (this != &other) {
+            data = other.data;
+        }
+        return *this;
+    }
+
+       ~Box() {
+        delete data;
+    }
+
+    void setValue(int value) { *data = value; }
+    int getValue() const { return *data; }
+
+    void show(string label) {
+        cout << label << "Value: " << getValue() << endl;
+    }
+};
+
+int main() {
+    int main() {
+    cout << "Deep Copy Demonstration:" << endl;
+    Box b1(10);
+    Box b2 = b1;
+    b2.setValue(20);
+    b1.show("b1");
+    b2.show("b2");
+
+    cout << "Shallow Copy Demonstration:" << endl;
+    Box s1(100);
+    Box s2 = s1;
+    s2.setValue(200);
+    s1.show("s1");
+    s2.show("s2");
+
+    return 0;
+}
+
+    return 0;
+}
