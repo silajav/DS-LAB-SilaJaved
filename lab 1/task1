@@ -1,0 +1,36 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class account{
+    string balance;
+    public:
+    
+    account(){
+        balance="0";
+    }
+    account(string b){
+        balance=b;
+    }
+    
+    account(const account& obj){
+        balance=obj.balance;
+    }
+    
+    string getbalance(){
+        return balance;
+    }
+};
+
+int main() {
+    account bank1;
+    cout<<"Bank1 balance: "<<bank1.getbalance()<<endl;
+   account bank2("1000");
+   cout<<"Bank2 balance: "<<bank2.getbalance()<<endl;
+   
+   account bank3=bank2;
+   cout<<"bank3 balance: "<<bank3.getbalance()<<endl;
+   
+   
+
+    return 0;
+}
