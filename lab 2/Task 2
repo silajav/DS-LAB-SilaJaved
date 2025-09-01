@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+//TASK 2:
+int main() {
+    int rows, cols;
+    cout<<"Enter benches number: "<<endl;
+    cin>>rows;
+    cout<<"Enter seats: "<<endl;
+    cin>>cols;
+    
+    int** array= new int*[rows];
+    for (int i=0; i< rows; i++){
+        array[i]= new int[cols];
+    }
+    
+    for (int i=0; i<rows; i++){
+        for (int j=0; j<cols; j++){
+            array[i][j]=0;
+            
+        }
+    }
+    
+    char choice = 'y';
+    while (choice == 'y' || choice == 'Y') {
+        int bench, seat;
+        cout << "Enter bench number (1 to " << rows << "): ";
+        cin >> bench;
+        cout << "Enter seat number (1 to " << cols << "): ";
+        cin >> seat;
+
+        // Check for valid input
+        if (bench >= 1 && bench <= rows && seat >= 1 && seat <= cols) {
+            array[bench - 1][seat - 1] = 1;  
+            
+        } else {
+            cout << "Invalid. Try again." << endl;
+        }
+
+        cout << "Fill another seat? ";
+        cin >> choice;
+    }
+    
+    for (int i=0; i<rows; i++){
+        for (int j=0; j<cols; j++){
+            cout<<array[i][j]<<" ";
+        }
+        cout<<"\n";
+        
+    }
+    return 0;
+}
