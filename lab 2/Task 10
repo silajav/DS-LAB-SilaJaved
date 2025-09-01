@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int categories;
+    cout << "Enter number of categories: ";
+    cin >> categories;
+
+    int** books = new int*[categories];
+    int* sizes = new int[categories];
+
+    for (int i = 0; i < categories; i++) {
+        cout << "Enter number of books in category " << i + 1 << ": ";
+        cin >> sizes[i];
+        books[i] = new int[sizes[i]];
+        cout << "Enter book IDs: ";
+        for (int j = 0; j < sizes[i]; j++) {
+            cin >> books[i][j];
+        }
+    }
+
+    int searchID;
+    cout << "Enter book ID to search: ";
+    cin >> searchID;
+
+    bool found = false;
+    for (int i = 0; i < categories; i++) {
+        for (int j = 0; j < sizes[i]; j++) {
+            if (books[i][j] == searchID) {
+                cout << "Book found in category " << i + 1 << endl;
+                found = true;
+                break;
+            }
+        }
+        if (found) break;
+    }
+
+    if (!found) cout << "Book not found" << endl;
+
+    for (int i = 0; i < categories; i++) {
+        delete[] books[i];
+    }
+    delete[] books;
+    delete[] sizes;
+
+    return 0;
+}
